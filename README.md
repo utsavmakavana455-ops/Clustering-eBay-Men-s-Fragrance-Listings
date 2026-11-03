@@ -147,49 +147,10 @@ There are no empty gaps between groups: the data form a continuum from slow to f
 4. **Rationalise the budget, slow sellers.** Clearest candidate for clearance or delisting.
 5. **Validate first.** Compare actual margins and weekly sales for 20 to 30 listings per segment with the profiles before making big changes.
 
-## 7. Repository structure
-
-```
-.
-├── COM7022_clustering.ipynb   # full analysis, executed, with outputs saved
-├── data/                      # put Sales-[5444].csv here (not included)
-│   └── README.md
-├── figures/                   # the 8 figures saved by the notebook
-├── results/                   # CSV tables
-│   ├── kmeans_scores.csv      #   scores for k = 2 to 10
-│   ├── dbscan_grid.csv        #   eps / min_samples search
-│   ├── model_comparison.csv   #   side-by-side model scores
-│   └── cluster_profiles.csv   #   profile of each K-Means cluster
-├── report/                    # final write-up (Word and PDF)
-├── requirements.txt
-├── LICENSE
-└── README.md
-```
-
-## 8. How to run
-
-**Local**
-
-```bash
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-# place the dataset at data/Sales-[5444].csv
-jupyter notebook COM7022_clustering.ipynb
-```
-
-Run all cells from the top. The notebook creates `figures/` and `results/` if they are missing.
-
-**Google Colab**
-
-Upload the notebook and the CSV, then choose Runtime > Run all. The notebook looks for the file in
-`data/`, the working folder, then `/content/`.
-
-Results are reproducible: every random step uses seed 42.
 
 **Tools:** Python, pandas, NumPy, scikit-learn, SciPy, matplotlib, seaborn.
 
-## 9. Limitations
+## 7. Limitations
 
 - Three-day snapshot from one marketplace, so seasonal and channel effects are unknown.
 - Units sold are cumulative and listing age is missing, so older listings look stronger.
@@ -198,14 +159,14 @@ Results are reproducible: every random step uses seed 42.
 - "Sales value" ignores cost, so it is not profit.
 - The `sold` column contained at least one clear error.
 
-## 10. Possible improvements
+## 8. Possible improvements
 
 - Add listing age, cost and margin data.
 - Repeat over several time periods to see whether the segments last.
 - Extract size and concentration from the listing title text.
 - Try a Gaussian mixture model, which gives each listing a soft membership across overlapping groups.
 
-## 11. References
+## 9. References
 
 - Arthur, D. and Vassilvitskii, S. (2007) 'k-means++: the advantages of careful seeding', *Proceedings of the 18th Annual ACM-SIAM Symposium on Discrete Algorithms*, pp. 1027-1035.
 - Caliński, T. and Harabasz, J. (1974) 'A dendrite method for cluster analysis', *Communications in Statistics*, 3(1), pp. 1-27.
